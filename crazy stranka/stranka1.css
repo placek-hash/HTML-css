@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #007aff;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul, nav li {
+    display: inline;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: bisque;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav img {
+    width: 100px;
+}
+
+nav button:first-child {
+    background: none;
+    outline: none;
+    border: none;
+    color: aliceblue;
+    font-size: 1.2rem;
+    margin-left:
+}
