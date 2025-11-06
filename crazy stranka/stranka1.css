@@ -50,3 +50,14 @@ nav button:first-child {
     font-size: 1.2rem;
     margin-left:
 }
+
+.uvod {
+    width: 50%;
+    margin: auto;
+    margin-top: 40vh;
+    text-align: center;
+}
+
+.uvod h1 {
+    font-size: 3rem;
+}
