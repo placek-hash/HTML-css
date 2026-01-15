@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="projekt.css">
+    <meta charset="UTF-8">
+    <title>Rezervace stolu | Restaurace</title>
+    
+</head>
+<body>
+ 
+<div class="card">
+    <h1>Rezervace stolu</h1>
+ 
+    <form id="formular">
+        <label>Jméno a příjmení</label>
+        <input type="text" id="jmeno" required>
+ 
+        <label>E-mail</label>
+        <input type="email" id="email" required>
+ 
+        <label>Datum</label>
+        <input type="date" id="datum" required>
+ 
+        <label>Čas</label>
+        <input type="time" id="cas" required>
+ 
+        <label>Počet osob</label>
+        <input
+            type="number"
+            id="osoby"
+            value="1"
+            min="1"
+            max="20"
+            required
+        >
+ 
+        <label>Poznámka k rezervaci</label>
+        <textarea id="poznamka" placeholder="Např. alergie, narozeniny..."></textarea>
+ 
+        <button type="submit">Rezervovat stůl</button>
+    </form>
+ 
+    <div id="potvrzeni"></div>
+</div>
+ 
+<script>
+    document.getElementById("formular").addEventListener("submit", function(e) {
+        e.preventDefault();
+ 
+        let jmeno = document.getElementById("jmeno").value;
+        let datum = document.getElementById("datum").value;
+        let cas = document.getElementById("cas").value;
+        let osoby = document.getElementById("osoby").value;
+        let poznamka = document.getElementById("poznamka").value;
+ 
+        let potvrzeni = document.getElementById("potvrzeni");
+        potvrzeni.style.display = "block";
+        potvrzeni.innerHTML =
+            "<strong>Rezervace potvrzena</strong><br><br>" +
+            "Jméno: " + jmeno + "<br>" +
+            "Datum: " + datum + "<br>" +
+            "Čas: " + cas + "<br>" +
+            "Počet osob: " + osoby + "<br>" +
+            "Poznámka: " + (poznamka ? poznamka : "Žádná");
+    });
+</script>
+ 
+</body>
+</html>
