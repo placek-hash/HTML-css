@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+#messages {
+    width: 50%;
+    background-color: aqua;
+    height: 90vh;
+    padding: 1px;
+}
+
+.message {
+    border: 1px solid greenyellow;
+}

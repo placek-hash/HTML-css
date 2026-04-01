@@ -4,7 +4,26 @@
     <link rel="stylesheet" href="projekt.css">
     <meta charset="UTF-8">
     <title>Rezervace stolu | Restaurace</title>
-    
+    <style>
+        /* Přidání stylování pro radio buttony */
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+
+        .radio-group input {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
  
@@ -36,6 +55,19 @@
  
         <label>Poznámka k rezervaci</label>
         <textarea id="poznamka" placeholder="Např. alergie, narozeniny..."></textarea>
+
+        <!-- Nové pole pro výběr venkovního nebo vnitřního sezení -->
+        <label>Chcete sedět venku nebo uvnitř?</label>
+        <div class="radio-group">
+            <div>
+                <input type="radio" id="venku" name="misto" value="venku" required>
+                <label for="venku">Venku (terasa)</label>
+            </div>
+            <div>
+                <input type="radio" id="uvnitr" name="misto" value="uvnitr" required>
+                <label for="uvnitr">Uvnitř</label>
+            </div>
+        </div>
  
         <button type="submit">Rezervovat stůl</button>
     </form>
@@ -52,7 +84,10 @@
         let cas = document.getElementById("cas").value;
         let osoby = document.getElementById("osoby").value;
         let poznamka = document.getElementById("poznamka").value;
- 
+        
+        // Získání hodnoty pro výběr místa
+        let misto = document.querySelector('input[name="misto"]:checked').value;
+
         let potvrzeni = document.getElementById("potvrzeni");
         potvrzeni.style.display = "block";
         potvrzeni.innerHTML =
@@ -61,7 +96,8 @@
             "Datum: " + datum + "<br>" +
             "Čas: " + cas + "<br>" +
             "Počet osob: " + osoby + "<br>" +
-            "Poznámka: " + (poznamka ? poznamka : "Žádná");
+            "Poznámka: " + (poznamka ? poznamka : "Žádná") + "<br>" +
+            "Místo: " + (misto === "venku" ? "Venku (terasa)" : "Uvnitř");
     });
 </script>
  
