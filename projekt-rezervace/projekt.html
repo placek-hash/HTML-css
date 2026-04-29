@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezervace stolu | Restaurace</title>
+    <link rel="stylesheet" href="projekt.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>Rezervace stolu</h1>
+
+    <form id="formular">
+
+        <label>Jméno a příjmení</label>
+        <input type="text" name="jmeno" required>
+
+        <label>E-mail</label>
+        <input type="email" name="email" required>
+
+        <label>Datum</label>
+        <input type="date" name="datum" required>
+
+        <label>Čas</label>
+        <input type="time" name="cas" required>
+
+        <label>Počet osob</label>
+        <input type="number" name="osoby" value="1" min="1" max="20" required>
+
+        <label>Poznámka k rezervaci</label>
+        <textarea name="poznamka"></textarea>
+
+        <label>Chcete sedět venku nebo uvnitř?</label>
+
+        <div class="radio-group">
+            <label class="radio-card">
+                <input type="radio" name="misto" value="venku" required>
+                <span class="icon">☀️</span>
+                <span class="title">Venku</span>
+                <span class="subtitle">Na terase</span>
+            </label>
+
+            <label class="radio-card">
+                <input type="radio" name="misto" value="uvnitr" required>
+                <span class="icon">🏠</span>
+                <span class="title">Uvnitř</span>
+                <span class="subtitle">V restauraci</span>
+            </label>
+        </div>
+
+        <button type="submit">Rezervovat stůl</button>
+
+    </form>
+</div>
+
+<script>
+
+    document.getElementById("formular").addEventListener("submit", function(e) {
+        e.preventDefault();
+    
+        let formData = new FormData(this);
+    
+        fetch("index.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("potvrzeni").innerHTML = data;
+            document.getElementById("potvrzeni").style.display = "block";
+        })
+        .catch(err => {
+            alert("Chyba při odesílání!");
+        });
+    });
+    </script>
+<div id="potvrzeni"></div>
+</body>
+</html>
